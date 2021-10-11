@@ -1,9 +1,12 @@
 (ns tst.demo.snowflake
   (:use tupelo.core tupelo.test)
   (:require
-    ; [demo.config :as config]
+    [demo.config :as config]
     [next.jdbc :as jdbc]
     ))
+
+(spyx config/snowflake-user)
+(spyx config/snowflake-password)
 
 (import 'com.snowflake.client.jdbc.SnowflakeDriver)
 (Class/forName "net.snowflake.client.jdbc.SnowflakeDriver")
@@ -33,8 +36,8 @@
 
 (def snowflake-conn
   (let [props (doto (java.util.Properties.)
-                (.put "user" "cloojure")
-                (.put "password" "XXXXXX")
+                (.put "user" config/snowflake-user)
+                (.put "password" config/snowflake-password)
                 (.put "warehouse" "COMPUTE_WH")
                 (.put "db" "SNOWFLAKE_SAMPLE_DATA")
                 (.put "schema" "WEATHER")

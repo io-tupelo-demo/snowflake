@@ -3,6 +3,7 @@
 *.idea
 *.iml
 *.iml 
+profiles.clj
 *.jar
 *.out
 *.pyc
