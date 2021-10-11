@@ -4,23 +4,14 @@
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [; priority-1 libs
-                 [org.clojure/algo.generic "0.1.3"]
                  [org.clojure/clojure "1.10.3"]
-                 [org.clojure/tools.reader "1.3.6"]
-                 [tupelo "21.09.07"]
+                 [tupelo "21.10.06b"]
 
                  ; priority-2 libs
-                 [com.rpl/specter "1.1.3"]
                  [environ "1.2.0"]
-                 [http-kit "2.5.3"]
-                 [org.flatland/ordered "1.5.9"]
-
-                 ; [org.jfree/jfreechart "1.5.1"]
-                 [com.climate/claypoole "1.1.4"]
                  [prismatic/schema "1.1.12"]
                  [seancorfield/next.jdbc "1.2.659"]
                  [net.snowflake/snowflake-jdbc "3.13.8"]
-
                  ]
 
   :plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]

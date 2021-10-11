@@ -34,7 +34,7 @@
 (def snowflake-conn
   (let [props (doto (java.util.Properties.)
                 (.put "user" "cloojure")
-                (.put "password" "#Swiper42")
+                (.put "password" "XXXXXX")
                 (.put "warehouse" "COMPUTE_WH")
                 (.put "db" "SNOWFLAKE_SAMPLE_DATA")
                 (.put "schema" "WEATHER")
@@ -48,10 +48,11 @@
 ;***** MUST USE JAVA 11 or get exception re:  https://github.com/snowflakedb/snowflake-jdbc/issues/484  *****
 ;************************************************************************************************************
 (dotest
-  ; (spy :tst.demo.snowflake)
+  (spy :tst.demo.snowflake)
   (let [raw (unlazy (jdbc/execute! snowflake-conn
                        ["SELECT count(*) from SNOWFLAKE_SAMPLE_DATA.WEATHER.DAILY_14_TOTAL; "]))
             ; raw => [{:COUNT(*) 36406252}]
         count (-> raw only first val)]
+    (spyx count)
     (is (< count 300e6)))
 )
