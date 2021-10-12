@@ -1,11 +1,11 @@
-
 {
- :dev  {:env {:intrinio-api-key "XXXX001"
-              :eod-historical-data-api-token "XXXX002"}}
-
- :test {:env {:intrinio-api-key "XXXX001"
-              :eod-historical-data-api-token "XXXX002"}}
+ :dev  {:env {
+              :snowflake-user "XXXXX"
+              :snowflake-password "YYYYY"}}
+ :test  {:env {
+               :snowflake-user "XXXXX"
+               :snowflake-password "YYYYY"}}
 
  :prod {:env {}} ; #todo
-
  }
+
