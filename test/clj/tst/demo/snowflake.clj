@@ -31,5 +31,6 @@
             ; raw => [{:COUNT(*) 36406252}]
         count (-> raw only first val)]
     (spyx count)
-    (is (< count 300e6)))
+    (is (< 30e6 count)))
 )
+

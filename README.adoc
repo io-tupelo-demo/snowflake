@@ -63,7 +63,7 @@ Ran 2 tests containing 1 assertions.
 0 failures, 0 errors.```
 ```
 
-So the test code has connected to a public demo table in Snowflake, and verified that the number of
+So the test code has connected to a public demo table in Snowflake (`SNOWFLAKE_SAMPLE_DATA.WEATHER.DAILY_14_TOTAL`), and verified that the number of
 rows is over 36 million.  If, instead, you see an Exception like this:
 
 ```
