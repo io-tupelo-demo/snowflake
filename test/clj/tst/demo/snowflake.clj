@@ -21,9 +21,9 @@
                 )]
     (java.sql.DriverManager/getConnection snowflake-url props)))
 
-;************************************************************************************************************
-;***** MUST USE JAVA 11 or get exception re:  https://github.com/snowflakedb/snowflake-jdbc/issues/484  *****
-;************************************************************************************************************
+;**********************************************************************************************************************************
+;***** MUST USE JAVA 15 or earlier, else get exception re:  https://github.com/snowflakedb/snowflake-jdbc/issues/484
+;**********************************************************************************************************************************
 (dotest
   (spy :tst.demo.snowflake)
   (let [raw (unlazy (jdbc/execute! snowflake-conn
