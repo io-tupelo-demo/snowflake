@@ -25,7 +25,7 @@ OpenJDK 64-Bit Server VM (build 11.0.10+9, mixed mode)
 Leiningen 2.9.6 on Java 11.0.10 OpenJDK 64-Bit Server VM
 ```
 
-=== WARNING: You must user Java 11
+=== WARNING: You must user Java 15 (or older)
 
 As of this writing (Oct 2021), the Snowflake JDBC driver has a bug that crashes if you use a newer
 version of Java (eg Java 17).
@@ -52,7 +52,7 @@ At this point, you should be ready to test your access to Snowflake:
 lein test _bootstrap
 
 -----------------------------------
-   Clojure 1.10.3    Java 11.0.10
+   Clojure 1.10.3    Java 15.0.2
 -----------------------------------
 
 lein test tst.demo.snowflake
