@@ -42,3 +42,45 @@ After using `git clone` to copy this repo to your local machine, execute:
 Then, in `profiles.clj`, replace the placeholders `XXXXX` and `YYYYY` 
 with the actual values for your Snowflake `user` and `password`.
 
+== Test Run
+
+At this point, you should be ready to test your access to Snowflake:
+
+```
+ > lein clean ; lein test
+
+lein test _bootstrap
+
+-----------------------------------
+   Clojure 1.10.3    Java 11.0.10
+-----------------------------------
+
+lein test tst.demo.snowflake
+:spy--tst.demo.snowflake--line-028 => :tst.demo.snowflake
+count => 36406252
+
+Ran 2 tests containing 1 assertions.
+0 failures, 0 errors.```
+```
+
+So the test code has connected to a public demo table in Snowflake, and verified that the number of
+rows is over 36 million.  If, instead, you see an Exception like this:
+
+```
+ERROR in (dotest-line-27) (SnowflakeResultSetSerializableV1.java:1061)
+Uncaught exception, not in assertion.
+expected: nil
+  actual: net.snowflake.client.jdbc.SnowflakeSQLLoggedException: JDBC driver internal error: Fail to retrieve row count for first arrow chunk: sun.misc.Unsafe or java.nio.DirectByteBuffer.<init>(long, int) not available.
+ at net.snowflake.client.jdbc.SnowflakeResultSetSerializableV1.setFirstChunkRowCountForArrow (SnowflakeResultSetSerializableV1.java:1061)
+    net.snowflake.client.jdbc.SnowflakeResultSetSerializableV1.create (SnowflakeResultSetSerializableV1.java:550)
+    net.snowflake.client.jdbc.SnowflakeResultSetSerializableV1.create (SnowflakeResultSetSerializableV1.java:467)
+    net.snowflake.client.core.SFResultSetFactory.getResultSet (SFResultSetFactory.java:29)
+    net.snowflake.client.core.SFStatement.executeQueryInternal (SFStatement.java:219)
+    ...
+```
+
+then you are using a newer version of Java that exposes the bug in the Snowflake drivers (to be precise, in
+one of their depedencies).
+
+
+
