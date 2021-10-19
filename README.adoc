@@ -30,8 +30,7 @@ Leiningen 2.9.6 on Java 11.0.10 OpenJDK 64-Bit Server VM
 As of this writing (Oct 2021), the Snowflake JDBC driver has a bug that crashes if you use a newer
 version of Java (eg Java 17).
 
-
-== Installation 
+== Credentials Configuration
 
 This code uses the `lein-environ` plugin to access your Snowflake credentials from 
 a file `profiles.clj` which you should **never check into SCM/git**.
